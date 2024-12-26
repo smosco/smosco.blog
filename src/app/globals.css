@@ -2,15 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+@import './markdown.css';
 
 @layer base {
   :root {
@@ -33,38 +25,30 @@ body {
     --border: 0 0% 89.8%;
     --input: 0 0% 89.8%;
     --ring: 0 0% 3.9%;
-    --chart-1: 12 76% 61%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
     --radius: 0.5rem;
+    --font-pretendard: 'Pretendard', sans-serif;
   }
+
   .dark {
     --background: 0 0% 3.9%;
     --foreground: 0 0% 98%;
-    --card: 0 0% 3.9%;
+    --card: 0 0% 13.7%;
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 3.9%;
+    --popover: 0 0% 13.7%;
     --popover-foreground: 0 0% 98%;
-    --primary: 0 0% 98%;
+    --primary: 0 0% 96.1%;
     --primary-foreground: 0 0% 9%;
-    --secondary: 0 0% 14.9%;
-    --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 14.9%;
-    --muted-foreground: 0 0% 63.9%;
-    --accent: 0 0% 14.9%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 14.9%;
-    --input: 0 0% 14.9%;
-    --ring: 0 0% 83.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --secondary: 0 0% 9%;
+    --secondary-foreground: 0 0% 96.1%;
+    --muted: 0 0% 9%;
+    --muted-foreground: 0 0% 54.9%;
+    --accent: 0 0% 9%;
+    --accent-foreground: 0 0% 96.1%;
+    --destructive: 0 0% 98%;
+    --destructive-foreground: 0 0% 3.9%;
+    --border: 0 0% 20%;
+    --input: 0 0% 20%;
+    --ring: 0 0% 96.1%;
   }
 }
 
@@ -74,215 +58,6 @@ body {
   }
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-pretendard), Arial, sans-serif;
   }
-}
-
-body {
-  font-family: var(--font-pretendard);
-}
-
-/* Generic styles */
-:root {
-  --column-width: 67ch;
-  --line-width: 0.125rem;
-  --line-height: 1.7;
-
-  --one-line: calc(var(--line-height) * 0.5rem);
-  --half-line: calc(var(--one-line) * 0.25rem);
-
-  background-color: var(--background-color);
-  color: var(--color);
-}
-
-:is(body, article, main, figure) > :is(img, video):not(.exclude) {
-  max-width: 100%;
-}
-
-hr {
-  color: inherit;
-  border: 0;
-  border-top: 1px dashed #212529;
-}
-
-/* Vertical Rhythm */
-p,
-ul,
-ol,
-figcaption,
-nav,
-td,
-th,
-label {
-  line-height: var(--line-height);
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-hr,
-footer,
-header,
-nav,
-figure,
-figcaption,
-:is(ul, ol):not(li > *),
-:is(body, article, main) > :is(img, video, details):not(.exclude),
-table,
-article > aside,
-article > aside {
-  margin: var(--one-line) 0;
-}
-
-/* Headings */
-h1 {
-  font-size: 2.5rem;
-  font-weight: 800;
-  line-height: calc(var(--line-height) * 2rem);
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-bottom: 0;
-}
-
-h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  line-height: calc(var(--line-height) * 2rem);
-  margin-bottom: calc(var(--line-height) * 0.5rem);
-  padding-top: calc(var(--line-height) * 2rem);
-}
-
-h3 {
-  font-size: 1.75rem;
-  font-weight: 600;
-  line-height: calc(var(--line-height) * 1.2rem);
-  margin-bottom: calc(var(--line-height) * 0.25rem);
-  padding-top: calc(var(--line-height) * 1.5rem);
-}
-
-h4 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  line-height: calc(var(--line-height) * 1.2rem);
-  margin-bottom: calc(var(--line-height) * 0.25rem);
-  padding-top: calc(var(--line-height) * 1.25rem);
-}
-
-h5,
-h6 {
-  font-size: 1.25rem;
-  line-height: calc(var(--line-height) * 1.2rem);
-  margin-bottom: calc(var(--line-height) * 0.25rem);
-  padding-top: calc(var(--line-height) * 1rem);
-}
-
-:is(h3, h4, h5, h6) + * {
-  margin-top: 0;
-}
-
-/* Justification (default off; use data-justify="on" on <html> to enable) */
-/* 67ch (var(--column-width) / 95% (column max-width) === 70.526315789ch */
-@media (min-width: 70.5ch) {
-  [data-justify='on'] body {
-    text-align: justify;
-    text-justify: inter-character;
-  }
-}
-
-/* Tables */
-table:not(.exclude) {
-  display: block;
-  width: 100%;
-  overflow: auto;
-  border-collapse: collapse;
-}
-
-table:not(.exclude) :is(td, th) {
-  padding: calc(var(--line-height) * 0.25rem);
-  border: var(--line-width) solid;
-}
-
-table:not(.exclude) td {
-  word-wrap: break-word;
-}
-
-/* inline code */
-:not(pre) > code * {
-  font-family: 'Fira Code', monospace !important;
-  background-color: inherit;
-  padding: 0.11rem 0.3rem;
-  margin-right: 0.2rem;
-  border: 1px solid var(--inline-code-background-color);
-  border-radius: 0.3rem;
-  background-color: var(--inline-code-background-color);
-  font-size: 0.9rem;
-}
-
-pre {
-  padding: 1.5rem;
-  border-radius: 0.8rem;
-  margin-left: -1.2rem;
-  margin-right: -1.2rem;
-  overflow: auto;
-  line-height: 1.5rem;
-}
-
-pre[class*='language-']::-webkit-scrollbar {
-  display: none;
-}
-
-pre * {
-  font-family: 'Fira Code', monospace !important;
-  font-size: 0.9rem;
-  font-weight: 400;
-  letter-spacing: -0.03rem;
-  white-space: pre;
-
-  -moz-tab-size: 2;
-  -o-tab-size: 2;
-  tab-size: 2;
-}
-
-article {
-  word-wrap: break-word;
-  word-break: keep-all;
-}
-
-blockquote:not(.exclude) {
-  padding-left: var(--one-line);
-  border-left: var(--line-width) solid;
-}
-
-article ul,
-ol {
-  padding-left: calc(var(--line-height) * 1rem);
-}
-article > ul {
-  list-style: square;
-}
-
-article > ul ul {
-  list-style: circle;
-}
-
-article > ul ul ul {
-  list-style: disc;
-}
-
-article > ol {
-  list-style: auto;
-}
-
-ul,
-ol > ul,
-ol {
-  padding-left: calc(var(--line-height) * 1rem);
-}
-
-article a {
-  color: #4055dc;
 }

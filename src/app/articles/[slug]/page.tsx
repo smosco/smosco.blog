@@ -1,3 +1,4 @@
+import MarkdownContent from '@/components/MarkdownContent';
 import { getPostBySlug } from '@/lib/markdown';
 
 export default async function BlogPostPage({
@@ -51,10 +52,12 @@ export default async function BlogPostPage({
           className="w-full rounded-lg mb-4"
         />
       )}
-      <article
-        className="prose prose-lg text-gray-800"
-        dangerouslySetInnerHTML={{ __html: post.contentHtml }}
-      />
+      <MarkdownContent>
+        <article
+          className="prose prose-lg text-gray-800"
+          dangerouslySetInnerHTML={{ __html: post.contentHtml }}
+        />
+      </MarkdownContent>
       <hr className="mt-8" />
       <footer>
         <a
