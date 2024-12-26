@@ -15,7 +15,7 @@ export function Header() {
 
   return (
     <header className="border-b">
-      <nav className="mx-auto max-w-5xl px-6 py-4">
+      <nav className="mx-auto max-w-4xl px-6 py-4">
         <ul className="flex items-center gap-8">
           {navigation.map((item) => (
             <li key={item.name}>

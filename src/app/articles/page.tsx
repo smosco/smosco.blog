@@ -5,7 +5,7 @@ export default function ArticlesPage() {
   const articles = getAllPosts();
 
   return (
-    <div className="container mx-auto py-10">
+    <div className="container mx-auto">
       <ul className="space-y-4">
         {articles.map((article) => (
           <li key={article.slug}>

@@ -23,7 +23,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${pretendard.variable} antialiased`}>
         <Header />
-        <main className="mx-auto max-w-5xl px-6 py-8">{children}</main>
+        <main className="mx-auto max-w-2xl px-6 py-8">{children}</main>
       </body>
     </html>
   );

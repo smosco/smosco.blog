@@ -19,37 +19,15 @@ export default async function BlogPostPage({
 
   return (
     <section className="flex flex-col space-y-4 mb-32">
-      <div className="flex justify-between items-center">
-        <span className="text-sm text-gray-600 uppercase tracking-wide font-light border border-gray-300 rounded-lg py-1 px-2">
-          {post.category}
-        </span>
-        <a
-          className="opacity-50 transition-opacity duration-300 hover:opacity-90"
-          title="Edit"
-          // href={`/contents/${post.category}/${post.slug}.md`}
-          href={`/contents/${post.slug}.md`}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <img
-            src="/icons/pencil.svg"
-            alt="Edit button"
-            width="18px"
-            height="18px"
-          />
-        </a>
-      </div>
       <h1 className="text-4xl font-bold">{post.title}</h1>
       <p className="flex items-center text-sm text-gray-600 space-x-2">
-        <span>{post.readingTime} min read</span>
-        <span>|</span>
         <span>{new Date(post.date).toLocaleDateString('ko-KR')}</span>
       </p>
       {post.thumbnail && (
         <img
           src={post.thumbnail}
           alt={post.title}
-          className="w-full rounded-lg mb-4"
+          className="w-[568px] h-[368px] rounded-lg mb-4"
         />
       )}
       <MarkdownContent>
@@ -64,7 +42,7 @@ export default async function BlogPostPage({
           href="/articles"
           className="block mt-24 text-lg underline text-blue-500 hover:text-blue-700"
         >
-          ← Back to /articles
+          ← 돌아가기 /articles
         </a>
       </footer>
     </section>
