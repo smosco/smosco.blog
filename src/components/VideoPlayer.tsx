@@ -25,7 +25,7 @@ export function VideoPlayer({ src, poster }: VideoPlayerProps) {
   };
 
   return (
-    <div className="relative w-full aspect-video rounded-lg overflow-hidden">
+    <div className="relative w-full aspect-video rounded-lg overflow-hidden shadow-lg">
       <video
         ref={videoRef}
         src={src}
