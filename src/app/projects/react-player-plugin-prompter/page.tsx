@@ -72,7 +72,7 @@ export default function ReactPlayerPluginPage() {
     <div className="container mx-auto py-12">
       {/* 히어로 섹션 */}
       <section className="text-center space-y-6 mb-16">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground md:text-6xl animate-fade-in-up pb-3">
+        <h1 className="text-5xl font-bold tracking-tighter text-foreground animate-fade-in-up pb-3">
           React Player Plugin Prompter
         </h1>
       </section>
@@ -139,7 +139,11 @@ export default function ReactPlayerPluginPage() {
         description="재생 시간에 맞춰 자막이 자동으로 스크롤됩니다."
         videoSrc="/videos/싱크.mp4"
         posterSrc="/images/싱크썸.png"
-        features={['재생 시간 동기화', '자막 탐색', '정확한 타이밍']}
+        features={[
+          '영상이 재생됨에 따라 자막 자동 스크롤',
+          '탐색 버튼으로 이전/다음 자막으로 빠르게 이동',
+          '정확한 타이밍',
+        ]}
       />
 
       <FeatureSection
@@ -147,7 +151,11 @@ export default function ReactPlayerPluginPage() {
         description="자막을 라인 단위 또는 블록 단위로 표시할 수 있습니다."
         videoSrc="/videos/모드.mp4"
         posterSrc="/images/모드썸.png"
-        features={['라인 단위 보기', '블록 단위 보기', '사용자 지정 가능']}
+        features={[
+          '한 줄 보기 모드 : 한 문장씩 집중 학습',
+          '전체 보기 모드 : 문맥 학습',
+          '학습 스타일에 맞게 자유롭게 전환 가능',
+        ]}
       />
 
       <FeatureSection
@@ -156,7 +164,7 @@ export default function ReactPlayerPluginPage() {
         videoSrc="/videos/포커스.mp4"
         posterSrc="/images/포커스썸.png"
         features={[
-          '탐색 도중 빠르게 현재 자막으로 돌아올 수 있음',
+          '다른 자막을 탐색하다가 현재 재생 자막으로 돌아오는 기능',
           '학습 흐름이 끊기지 않게 도움',
         ]}
       />
