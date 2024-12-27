@@ -11,12 +11,14 @@ function FeatureSection({
   videoSrc,
   posterSrc,
   features,
+  note,
 }: {
   title: string;
   description: string;
   videoSrc: string;
   posterSrc: string;
   features: string[];
+  note?: string;
 }) {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef(null);
@@ -58,19 +60,20 @@ function FeatureSection({
             <li key={index}>{feature}</li>
           ))}
         </ul>
+        {note && <p className="mt-4 text-sm text-warning">{note}</p>}
       </div>
       <VideoPlayer src={videoSrc} poster={posterSrc} />
     </section>
   );
 }
 
-export default function BiengualProjectPage() {
+export default function ReactPlayerPluginPage() {
   return (
     <div className="container mx-auto py-12">
       {/* 히어로 섹션 */}
       <section className="text-center space-y-6 mb-16">
-        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl md:text-6xl bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-foreground animate-fade-in-up pb-3">
-          Biengual
+        <h1 className="text-4xl font-bold tracking-tighter sm:text-5xl text-foreground md:text-6xl animate-fade-in-up pb-3">
+          React Player Plugin Prompter
         </h1>
       </section>
 
@@ -81,15 +84,17 @@ export default function BiengualProjectPage() {
             프로젝트 소개
           </h2>
           <p className="text-base text-muted-foreground">
-            Biengual은 사용자의 관심사에 맞춘 CNN 기사와 YouTube 동영상 콘텐츠를
-            통해 읽기와 듣기 능력을 향상시키는 무료 영어 학습 플랫폼입니다.
+            React Player Plugin은 React-Player를 확장하여 자막 동기화, 자막
+            탐색, 문장 또는 단어 접근성 등 학습에 최적화된 자막 제어 기능을
+            제공합니다. 영어 학습 및 교육 콘텐츠에 적합한 오픈소스
+            라이브러리입니다.
           </p>
           <Button
             size="lg"
             className="rounded-full"
             onClick={() =>
               window.open(
-                'https://biengual.store',
+                'https://www.npmjs.com/package/react-player-plugin-prompter',
                 '_blank',
                 'noopener,noreferrer',
               )
@@ -98,10 +103,9 @@ export default function BiengualProjectPage() {
             데모보기
           </Button>
         </div>
-        {/* TODO(@smosco): 디렉터님 영상 넣기 */}
         <VideoPlayer
-          src="/path-to-your-video/overview.mp4"
-          poster="https://media.licdn.com/dms/image/v2/D5605AQE7L8Cm2recBA/videocover-high/videocover-high/0/1734333674325?e=1735858800&v=beta&t=9SFr6U_Lzd1oPw5w5OoIc5ML0tILycaV2CH7FuVg1Ww"
+          src="/videos/overview.mp4"
+          poster="/images/overview-thumbnail.png"
         />
       </section>
 
@@ -113,81 +117,48 @@ export default function BiengualProjectPage() {
         <div className="grid md:grid-cols-3 gap-8">
           <FeatureCard
             icon="🎯"
-            title="맞춤형 콘텐츠"
-            description="관심사에 맞는 CNN 기사와 YouTube 동영상을 제공받으세요."
+            title="라인 및 블록 모드"
+            description="두 가지 자막 보기 모드를 지원합니다."
           />
           <FeatureCard
             icon="📚"
-            title="인터랙티브 학습"
-            description="북마크, 메모 기능과 퀴즈로 효과적인 학습을 경험하세요."
+            title="단어 선택 및 액션"
+            description="자막 내 단어를 클릭하여 커스텀 액션을 실행할 수 있습니다."
           />
           <FeatureCard
             icon="📊"
-            title="진행 상황 추적"
-            description="상세한 분석과 인사이트로 학습 여정을 모니터링하세요."
+            title="접근성과 유연성"
+            description="자막 스타일링과 다국어 지원을 제공합니다."
           />
         </div>
       </section>
 
       {/* 기능 섹션 */}
       <FeatureSection
-        title="메인 페이지"
-        description="맞춤형 학습의 시작점"
-        videoSrc="/videos/메인.mp4"
-        posterSrc="/images/메인썸.png"
-        features={[
-          '인기 콘텐츠를 한눈에 확인',
-          '개인화된 콘텐츠 추천',
-          '학습 진행 상황 추적',
-          '일일 영감 문구 제공',
-        ]}
+        title="자막 동기화"
+        description="재생 시간에 맞춰 자막이 자동으로 스크롤됩니다."
+        videoSrc="/videos/싱크.mp4"
+        posterSrc="/images/싱크썸.png"
+        features={['재생 시간 동기화', '자막 탐색', '정확한 타이밍']}
       />
 
       <FeatureSection
-        title="학습 페이지"
-        description="맞춤형 콘텐츠로 몰입하는 학습"
-        videoSrc="/videos/리스닝.mp4"
-        posterSrc="/images/리스닝썸.png"
-        features={[
-          '듣기와 읽기 연습 중 선택',
-          '관심 카테고리의 콘텐츠 접근',
-          '중요 문장 북마크와 메모 추가',
-          '맞춤형 퀴즈로 이해도 테스트',
-        ]}
+        title="라인 및 블록 모드"
+        description="자막을 라인 단위 또는 블록 단위로 표시할 수 있습니다."
+        videoSrc="/videos/모드.mp4"
+        posterSrc="/images/모드썸.png"
+        features={['라인 단위 보기', '블록 단위 보기', '사용자 지정 가능']}
       />
 
       <FeatureSection
-        title="스크랩 페이지"
-        description="학습 내용 복습 및 강화"
-        videoSrc="/vidoes/리딩.mp4"
-        posterSrc="/images/리딩썸.png"
+        title="포커스 모드"
+        description="현재 자막만 하이라이트하여 학습에 집중할 수 있습니다."
+        videoSrc="/videos/포커스.mp4"
+        posterSrc="/images/포커스썸.png"
         features={[
-          '저장한 모든 콘텐츠를 한 곳에서 확인',
-          '북마크한 문장 쉽게 관리',
-          '학습 기록에 빠르게 접근',
+          '탐색 도중 빠르게 현재 자막으로 돌아올 수 있음',
+          '학습 흐름이 끊기지 않게 도움',
         ]}
-      />
-
-      <FeatureSection
-        title="대시보드"
-        description="진행 상황 추적 및 동기 부여"
-        videoSrc="/videos/대시보드.mp4"
-        posterSrc="/images/대시보드썸.png"
-        features={[
-          '학습 여정 시각화',
-          '퀴즈 성과 모니터링',
-          '포인트 이력 추적',
-          '학습 선호도 분석',
-        ]}
-      />
-
-      {/* 반응형 디자인 */}
-      <FeatureSection
-        title="반응형 디자인"
-        description="어디서나 영어 학습"
-        videoSrc="/videos/반응형.mp4"
-        posterSrc="/images/반응형썸.png"
-        features={['이동 중 영어 학습 지원']}
       />
     </div>
   );
