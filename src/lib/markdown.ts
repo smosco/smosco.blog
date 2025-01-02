@@ -3,6 +3,7 @@ import path from 'path';
 import matter from 'gray-matter';
 import { remark } from 'remark';
 import html from 'remark-html';
+import gfm from 'remark-gfm';
 import { Post } from '@/types/Post';
 
 const contentDirectory = path.join(process.cwd(), 'src', 'contents');
@@ -42,7 +43,7 @@ export async function getPostBySlug(slug: string): Promise<Post> {
   const fullPath = path.join(contentDirectory, fileName);
   const fileContents = fs.readFileSync(fullPath, 'utf8');
   const { data, content } = matter(fileContents);
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark().use(gfm).use(html).process(content);
 
   return {
     slug,
