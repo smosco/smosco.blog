@@ -25,6 +25,7 @@ export default function ArticlesPage() {
                   month: 'long',
                   day: 'numeric',
                 })}
+                thumbnail={article.thumbnail}
               />
             </Link>
           </li>
