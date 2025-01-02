@@ -2,7 +2,7 @@
 title: 'BIENGUAL: SEO 기반 작업과 배운 점'
 date: 2024-11-28 16:00:00
 category: developments
-thumbnail: '/images/seo-basics.png'
+thumbnail: '/images/thumbnail/seo.webp'
 draft: false
 ---
 

@@ -2,7 +2,7 @@
 title: 'BIENGUAL: 범용적인 반응형 Carousel 만들기'
 date: 2024-12-16 15:00:00
 category: developments
-thumbnail: '/images/image-optimization.png'
+thumbnail: '/images/thumbnail/carousel.png'
 draft: false
 ---
 

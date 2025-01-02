@@ -2,7 +2,7 @@
 title: 'BIENGUAL: API 병렬 요청으로 Waterfall 문제 해결하기'
 date: 2024-12-10 12:00:00
 category: developments
-thumbnail: '/images/api-parallel.png'
+thumbnail: '/images/thumbnail/api-parallel.png'
 draft: false
 ---
 
