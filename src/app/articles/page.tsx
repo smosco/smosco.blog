@@ -3,11 +3,14 @@ import Link from 'next/link';
 
 export default function ArticlesPage() {
   const articles = getAllPosts();
+  const orderedArticles = articles.sort(function (a, b) {
+    return new Date(b.date).getTime() - new Date(a.date).getTime();
+  });
 
   return (
     <div className="container mx-auto">
       <ul className="space-y-4">
-        {articles.map((article) => (
+        {orderedArticles.map((article) => (
           <li key={article.slug}>
             <Link href={`/articles/${article.slug}`}>
               <div className="border rounded-lg p-4 hover:shadow-md">
