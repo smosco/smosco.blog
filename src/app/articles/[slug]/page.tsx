@@ -11,7 +11,7 @@ export default async function BlogPostPage({
     return (
       <div className="flex flex-col space-y-4 mb-32">
         <h1 className="text-3xl font-bold text-center">
-          포스트를 찾을 수 없습니다.
+          글을 찾을 수 없습니다.
         </h1>
       </div>
     );
