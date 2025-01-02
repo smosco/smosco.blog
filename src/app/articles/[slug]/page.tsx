@@ -27,7 +27,7 @@ export default async function BlogPostPage({
         <img
           src={post.thumbnail}
           alt={post.title}
-          className="w-[568px] h-[368px] rounded-lg mb-4"
+          className="w-full aspect-video object-cover rounded-lg mb-4 brightness-75"
         />
       )}
       <MarkdownContent>
