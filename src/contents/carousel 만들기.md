@@ -1,5 +1,5 @@
 ---
-title: 'BIENGUAL: 범용적인 반응형 Carousel 만들기'
+title: 'BIENGUAL: 재사용 가능한 반응형 Carousel 만들기'
 date: 2024-12-16 15:00:00
 category: developments
 thumbnail: '/images/thumbnail/carousel.png'
