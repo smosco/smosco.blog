@@ -329,6 +329,17 @@ const PortfolioPage = () => (
         githubLink="https://github.com/smosco/react-player-plugin-prompter"
       />
       <Section title="내가 구현한 기능">
+        <FeatureItem
+          videoSrc="/videos/PrompterPlayer.mp4"
+          title="자막 동기화 및 탐색"
+          contributions={[
+            '영상 재생 시간에 따른 자막 스크롤',
+            '자막 탐색',
+            '한줄 보기, 전체 보기 모드',
+          ]}
+        />
+      </Section>
+      <Section title="마주한 이슈">
         <IssueItem
           title="자막 탐색 로직 최적화"
           description="자막 탐색 로직에 이진 탐색을 도입해 탐색 속도를 크게 향상시키고 버퍼링 문제를 해결했습니다."
