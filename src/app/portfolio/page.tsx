@@ -1,5 +1,5 @@
 import React from 'react';
-import Image from 'next/image';
+import { VideoPlayer } from '@/components/VideoPlayer';
 
 const Section = ({
   title,
@@ -15,29 +15,23 @@ const Section = ({
 );
 
 const FeatureItem = ({
-  imageSrc,
+  videoSrc,
   title,
-  description,
   contributions,
 }: {
-  imageSrc: string;
+  videoSrc: string;
   title: string;
-  description: string;
   contributions: string[];
 }) => (
-  <div className="p-4 bg-gray-100 rounded border border-gray-300 flex flex-col lg:flex-row">
-    <div className="lg:w-1/3 mb-4 lg:mb-0">
-      <Image
-        src={imageSrc}
-        alt={title}
-        className="rounded"
-        width={300}
-        height={200}
-      />
+  <div className="flex flex-col lg:flex-row bg-gray-100 rounded border border-gray-300 overflow-hidden">
+    {/* 비디오 영역 */}
+    <div className="relative w-full lg:w-1/2 aspect-video">
+      <VideoPlayer src={videoSrc} poster="" />
     </div>
-    <div className="lg:w-2/3 pl-0 lg:pl-6">
+
+    {/* 텍스트 영역 */}
+    <div className="p-6 lg:w-2/3">
       <h3 className="text-lg font-medium mb-2">{title}</h3>
-      {/* <p className="text-gray-700 mb-4">{description}</p> */}
       <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
         {contributions.map((contribution, idx) => (
           <li key={idx}>{contribution}</li>
@@ -167,44 +161,56 @@ const PortfolioPage = () => (
       />
       <Section title="내가 구현한 기능">
         <FeatureItem
-          imageSrc="/images/리딩썸.png"
+          videoSrc="/videos/MainPage.mp4"
           title="메인 페이지"
-          description="당신만의 맞춤형 학습 시작점"
           contributions={[
-            '맞춤형 추천 알고리즘 설계 및 구현',
-            '사용자 학습 데이터 기반 실시간 통계 기능 개발',
-            '메인 페이지 레이아웃 및 스타일링 구현',
+            '재사용 가능한 반응형 Carousel',
+            '플로팅 반응형 학습 트래커',
+            '메인 페이지 레이아웃 및 스타일링',
           ]}
         />
         <FeatureItem
-          imageSrc="/images/learning-feature.jpg"
+          videoSrc="/videos/BookmarkOptimisticUpdate.mp4"
           title="학습 페이지"
-          description="맞춤형 콘텐츠로 학습에 몰입하세요"
           contributions={[
-            '북마크 및 메모 기능 API 설계 및 구현',
-            '학습 콘텐츠 자동 로드 및 카테고리화 기능 구현',
-            '퀴즈 생성 로직 및 UI 개발',
+            '최신 콘텐츠 포인트 차감 모달',
+            '영상 자막 학습 기능',
+            '북마크 및 메모 추가',
+            '스크롤, 영상 재생 시간에 따른 학습율 기록',
+            '학습 미션 수행 기록',
           ]}
         />
         <FeatureItem
-          imageSrc="/images/scrap-feature.jpg"
+          videoSrc="/videos/ScrapPage.mp4"
           title="스크랩 페이지"
-          description="복습으로 학습 효과를 극대화하세요"
           contributions={[
-            '사용자별 스크랩 데이터 관리 API 개발',
-            '스크랩 콘텐츠 목록 UI 및 상태 관리 구현',
-            '북마크한 문장 및 메모 동기화 기능 구현',
+            '문장 북마크, 메모 기능',
+            '외부 스크랩 낙관적 업데이트',
+            '스크랩 콘텐츠, 메모 목록 모아보기',
           ]}
         />
         <FeatureItem
-          imageSrc="/images/dashboard-feature.jpg"
+          videoSrc="/videos/QuizRetry.mp4"
+          title="퀴즈"
+          contributions={[
+            '내용 일치, 순서 맞추기, 빈칸 채우기 퀴즈 타입 별 컴포넌트',
+            '틀린 문제 다시 풀기',
+            '퀴즈 결과 페이지',
+            '퀴즈 힌트 보기',
+          ]}
+        />
+        <FeatureItem
+          videoSrc="/videos/Dashboard.mp4"
           title="대시보드"
-          description="학습 여정을 한눈에 파악하세요"
           contributions={[
             '사용자 진행 상황 대시보드 설계 및 구현',
-            '데이터 시각화를 위한 차트 컴포넌트 개발',
-            '포인트 이력 및 학습 선호도 분석 로직 구현',
+            '학습 카테고리 분포, 퀴즈 정답율 차트',
           ]}
+        />
+        <FeatureItem
+          videoSrc="/videos/Responsive.mp4"
+          title="반응형"
+          contributions={['반응형 UI 구현']}
         />
       </Section>
       <Section title="문제 해결 과정">
@@ -308,6 +314,17 @@ const PortfolioPage = () => (
         demoLink="https://www.npmjs.com/package/react-player-plugin-prompter"
         githubLink="https://github.com/smosco/react-player-plugin-prompter"
       />
+      <Section title="내가 구현한 기능">
+        <FeatureItem
+          videoSrc="/videos/PrompterPlayer.mp4"
+          title="자막 동기화 및 탐색"
+          contributions={[
+            '영상 재생 시간에 따른 자막 스크롤',
+            '자막 탐색',
+            '한줄 보기, 전체 보기 모드',
+          ]}
+        />
+      </Section>
       <Section title="문제 해결 과정">
         <IssueItem
           title="자막 탐색 로직 최적화"
