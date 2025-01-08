@@ -14,6 +14,7 @@ export function getAllPosts(): Post[] {
 
   return fileNames.map((fileName) => {
     const slug = fileName.replace(/\.md$/, '');
+
     const fullPath = path.join(contentDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
 
