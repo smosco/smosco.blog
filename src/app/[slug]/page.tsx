@@ -1,12 +1,60 @@
+import { Metadata } from 'next';
 import MarkdownContent from '@/components/MarkdownContent';
 import { getPostBySlug } from '@/lib/markdown';
 
-export default async function BlogPostPage({
-  params,
-}: {
+type Props = {
   params: { slug: string };
-}) {
+};
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const post = await getPostBySlug(params.slug);
+
+  if (!post) {
+    return {
+      title: 'BIENGUAL Blog',
+      description: 'smosco의 테크 블로그',
+      openGraph: {
+        type: 'website',
+        title: 'BIENGUAL Blog',
+        description: 'smosco의 테크 블로그',
+        url: `https://smosco-dev.vercel.app/blog/${params.slug}`,
+        images: [
+          {
+            url: 'https://smosco-dev.vercel.app/images/default-og.png',
+            width: 1200,
+            height: 630,
+            alt: 'Default blog og image',
+          },
+        ],
+      },
+    };
+  }
+
+  return {
+    title: post.title,
+    description: 'smosco의 테크 블로그',
+    openGraph: {
+      type: 'article',
+      title: post.title,
+      description: 'smosco의 테크 블로그',
+      url: `https://smosco-dev.vercel.app/${params.slug}`,
+      images: [
+        {
+          url: post.thumbnail
+            ? `https://smosco-dev.vercel.app/${post.thumbnail}`
+            : 'https://smosco-dev.vercel.app/images/og-image.png',
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+    },
+  };
+}
+
+export default async function BlogPostPage({ params }: Props) {
+  const post = await getPostBySlug(params.slug);
+
   if (!post) {
     return (
       <div className="flex flex-col space-y-4 mb-32">
