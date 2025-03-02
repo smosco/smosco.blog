@@ -10,8 +10,22 @@ const pretendard = localFont({
 });
 
 export const metadata: Metadata = {
-  title: 'smosco.blog',
-  description: 'welcome to smosco.blog',
+  title: 'smosco from cosmos',
+  description: 'smosco의 테크 블로그',
+  openGraph: {
+    type: 'website',
+    title: 'smosco from cosmos',
+    description: 'smosco의 테크 블로그',
+    url: 'https://smosco-dev.vercel.app/',
+    images: [
+      {
+        url: 'https://smosco-dev.vercel.app/images/og-image.png',
+        width: 1200,
+        height: 630,
+        alt: 'blog og image',
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
