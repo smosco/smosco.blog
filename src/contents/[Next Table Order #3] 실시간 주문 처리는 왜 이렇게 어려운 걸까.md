@@ -1,5 +1,5 @@
 ---
-title: 'SSE를 활용한 실시간 데이터 최적화: "손님이 주문을 넣었는데 화면에 안 떠요!"'
+title: '[Next Table Order #3] 실시간 주문 처리는 왜 이렇게 어려운 걸까'
 date: 2025-02-12 15:00:00
 category: next table order
 thumbnail: '/images/thumbnail/실시간주문썸.webp'

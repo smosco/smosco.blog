@@ -1,5 +1,5 @@
 ---
-title: '1억 개의 주문이 들어오면, 내 서비스는 살아남을 수 있을까?'
+title: '[Next Table Order #5] 주문이 많아지면 서비스는 버틸 수 있을까'
 date: 2025-03-05 21:00:00
 category: next table order
 thumbnail: '/images/thumbnail/1억개주문썸.webp'

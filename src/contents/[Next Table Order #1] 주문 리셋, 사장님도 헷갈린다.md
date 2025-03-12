@@ -1,5 +1,5 @@
 ---
-title: '🍽️사장님, 주문이 리셋이 안되는데요?'
+title: '[Next Table Order #1] 주문 리셋, 사장님도 헷갈린다'
 date: 2025-02-05 18:00:00
 category: next table order
 thumbnail: '/images/thumbnail/주문리셋썸.webp'

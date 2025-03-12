@@ -1,5 +1,5 @@
 ---
-title: '지미 존슨 하나 주세요!" — 옵션 설계기, 그 빡센 여정'
+title: '[Next Table Order #2] 옵션 설계는 왜 이렇게 복잡할까'
 date: 2025-02-11 15:00:00
 category: next table order
 thumbnail: '/images/thumbnail/옵션썸.webp'

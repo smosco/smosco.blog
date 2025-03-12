@@ -1,5 +1,5 @@
 ---
-title: '토스를 뚫어라" — 신입 개발자의 실전 프로젝트!'
+title: '[Next Table Order #0] 프로젝트는 이렇게 시작되었다'
 date: 2025-01-22 15:00:00
 category: developments
 thumbnail: '/images/thumbnail/토스뚫기썸.webp'

@@ -1,5 +1,5 @@
 ---
-title: '사장님, 이 가격 맞아요? - 테이블 오더 시스템에서 가격이 꼬이는 순간'
+title: '[Next Table Order #4] 테이블 오더 시스템에서 가격이 꼬이는 순간'
 date: 2025-02-24 19:00:00
 category: next table order
 thumbnail: '/images/thumbnail/가격고정썸.webp'
