@@ -75,7 +75,7 @@ export default async function BlogPostPage({ params }: Props) {
         <img
           src={post.thumbnail}
           alt={post.title}
-          className="w-full aspect-video object-cover rounded-lg mb-4 brightness-75"
+          className="w-full aspect-video object-cover rounded-lg mb-4 brightness-90"
         />
       )}
       <MarkdownContent>
