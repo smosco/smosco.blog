@@ -1,11 +1,11 @@
-import ArticleCard from '@/components/ArticlleCard';
+import PostCard from '@/components/PostCard';
 import { getAllPosts } from '@/lib/markdown';
 import Link from 'next/link';
 
 export default function PostsPage() {
-  const articles = getAllPosts();
+  const posts = getAllPosts();
 
-  const orderedArticles = [...articles].sort((a, b) => {
+  const orderedPosts = [...posts].sort((a, b) => {
     const dateA = new Date(a.date).getTime();
     const dateB = new Date(b.date).getTime();
     return dateB - dateA;
@@ -14,17 +14,17 @@ export default function PostsPage() {
   return (
     <div className="">
       <ul className="space-y-4">
-        {orderedArticles.map((article) => (
-          <li key={article.slug}>
-            <Link href={`/${article.slug}`} className="block">
-              <ArticleCard
-                category={article.category}
-                title={article.title}
-                date={new Date(article.date)
+        {orderedPosts.map((post) => (
+          <li key={post.slug}>
+            <Link href={`/posts/${post.id}-${post.slug}`} className="block">
+              <PostCard
+                category={post.category}
+                title={post.title}
+                date={new Date(post.date)
                   .toISOString()
                   .slice(0, 10)
                   .replace(/-/g, '.')}
-                thumbnail={article.thumbnail}
+                thumbnail={post.thumbnail}
               />
             </Link>
           </li>

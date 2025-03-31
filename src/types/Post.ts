@@ -1,5 +1,6 @@
 // Post 타입 정의
 export interface Post {
+  id: string;
   slug: string;
   title: string;
   date: string; // 날짜는 문자열로 저장
