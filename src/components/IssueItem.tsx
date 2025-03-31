@@ -1,37 +1,57 @@
-export default function IssueItem({
-  title,
-  description,
-  details,
-}: {
+import React from 'react';
+
+type IssueItemProps = {
   title: string;
   description: string;
   details: string[];
-}) {
-  <div className="relative mb-8">
-    <div className="absolute left-0 top-2 h-4 w-4 bg-blue-500 rounded-full"></div>
-    <div className="pl-8">
-      <h3 className="text-lg font-medium mb-2">{title}</h3>
-      <p className="text-gray-700 mb-4">{description}</p>
-      <ul className="list-disc list-inside text-sm text-gray-600">
-        {details.map((detail, idx) => (
-          <li key={idx}>{detail}</li>
-        ))}
-      </ul>
-    </div>
-  </div>;
-}
+  keywords?: string[];
+  performance?: { key: string; value: string }[];
+};
 
-// <IssueItem
-//   title="Responsive Carousel Component"
-//   description="Swiper를 사용하지 않고 직접 반응형 Carousel 컴포넌트를 설계 및 구현했습니다."
-//   details={[
-//     '제네릭 타입을 활용한 유연한 설계로 다양한 UI 지원',
-//     '디바이스별 항목 수 조정 로직 추가로 반응형 화면 지원',
-//     'autoPlay와 터치 이벤트 충돌 방지 로직 구현으로 UX 개선',
-//   ]}
-// />
-// <IssueItem
-//   title="Image Optimization"
-//   description="고해상도 이미지를 리사이징하여 성능을 대폭 개선했습니다."
-//   details={['LCP 6.9초 → 2.4초 개선', 'Latency 46ms → 19ms 감소']}
-// />
+export const IssueItem = ({
+  title,
+  description,
+  details,
+  keywords,
+  performance,
+}: IssueItemProps) => (
+  <div className="p-4 bg-gray-100 rounded border border-gray-300">
+    <h3 className="text-lg font-medium mb-2">{title}</h3>
+    <p className="text-gray-700 mb-4">{description}</p>
+    <ul className="list-disc list-inside text-sm text-gray-600 mb-4 space-y-1">
+      {details.map((detail, idx) => (
+        <li key={idx}>{detail}</li>
+      ))}
+    </ul>
+    {keywords && (
+      <>
+        <h4 className="font-medium text-sm mb-2">Keywords</h4>
+        <div className="flex flex-wrap gap-2 mb-4">
+          {keywords.map((tech, idx) => (
+            <span
+              key={idx}
+              className="px-2 py-1 bg-gray-200 text-gray-800 rounded text-xs"
+            >
+              {tech}
+            </span>
+          ))}
+        </div>
+      </>
+    )}
+    {performance && (
+      <>
+        <h4 className="font-medium text-sm mb-2">Performance Metrics</h4>
+        <table className="w-full text-sm">
+          <tbody>
+            {performance.map((item, idx) => (
+              <tr key={idx}>
+                <td className="pr-4 text-gray-600">{item.key}</td>
+                <td className="text-gray-800">{item.value}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </>
+    )}
+  </div>
+);
