@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!post) {
     return {
-      title: 'BIENGUAL Blog',
+      title: 'smosco.dev',
       description: 'smosco의 테크 블로그',
       openGraph: {
         type: 'website',

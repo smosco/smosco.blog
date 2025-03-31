@@ -37,7 +37,9 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${pretendard.variable} antialiased`}>
         <Header />
-        <main className="mx-auto max-w-3xl px-6 py-8">{children}</main>
+        <main className="pt-[120px] px-4 min-h-[calc(100vh-80px)]">
+          {children}
+        </main>
       </body>
     </html>
   );

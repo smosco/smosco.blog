@@ -2,7 +2,7 @@ import ArticleCard from '@/components/ArticlleCard';
 import { getAllPosts } from '@/lib/markdown';
 import Link from 'next/link';
 
-export default function HomePage() {
+export default function PostsPage() {
   const articles = getAllPosts();
 
   const orderedArticles = [...articles].sort((a, b) => {
