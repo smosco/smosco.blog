@@ -7,7 +7,8 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = await getPostById(params.slug);
+  const id = params.slug.split('-')[0];
+  const post = await getPostById(id);
 
   if (!post) {
     return {
@@ -17,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         type: 'website',
         title: 'BIENGUAL Blog',
         description: 'smosco의 테크 블로그',
-        url: `https://smosco-dev.vercel.app/posts/${params.slug}`,
+        url: `https://smosco-dev.vercel.app/posts/${params.slug}`, // fallback 용
         images: [
           {
             url: 'https://smosco-dev.vercel.app/images/default-og.png',
@@ -37,11 +38,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       type: 'article',
       title: post.title,
       description: 'smosco의 테크 블로그',
-      url: `https://smosco-dev.vercel.app/${params.slug}`,
+      url: `https://smosco-dev.vercel.app/posts/${post.id}-${post.slug}`,
       images: [
         {
           url: post.thumbnail
-            ? `https://smosco-dev.vercel.app/${post.thumbnail}`
+            ? `https://smosco-dev.vercel.app${post.thumbnail}`
             : 'https://smosco-dev.vercel.app/images/og-image.png',
           width: 1200,
           height: 630,
