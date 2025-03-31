@@ -37,7 +37,7 @@ export default function RootLayout({
     <html lang="ko">
       <body className={`${pretendard.variable} antialiased`}>
         <Header />
-        <main className="pt-[120px] px-4 min-h-[calc(100vh-80px)]">
+        <main className="pt-[120px] px-4 max-w-4xl mx-auto min-h-[calc(100vh-80px)]">
           {children}
         </main>
       </body>
