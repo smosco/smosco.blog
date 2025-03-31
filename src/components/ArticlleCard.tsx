@@ -1,52 +1,39 @@
-import { ArrowUpRight } from 'lucide-react';
+import Image from 'next/image';
 
 interface ArticleCardProps {
+  category?: string;
   title: string;
   date: string;
-  category: string;
   thumbnail: string;
 }
 
 export default function ArticleCard({
+  category,
   title,
   date,
-  category,
   thumbnail,
 }: ArticleCardProps) {
   return (
-    <div className="group relative hover:bg-slate-200 bg-slate-100 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-lg border border-slate-300 dark:border-slate-600 transition-all duration-100 overflow-hidden">
-      <div className="flex flex-col sm:flex-row">
-        {/* 이미지 */}
-        <div className="w-full sm:w-1/3 h-40 overflow-hidden relative">
-          <img
-            src={thumbnail}
-            alt={title}
-            className="w-full h-full object-cover"
-            style={{ objectPosition: 'center' }}
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-30"></div>
-        </div>
-
-        {/* 설명 */}
-        <div className="p-6 flex flex-col justify-between w-full sm:w-2/3">
-          <div className="flex items-center gap-2">
-            <span className="inline-block px-3 py-1 text-sm font-medium rounded-md bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100">
-              {category}
-            </span>
-          </div>
-
-          <h2 className="mt-3 text-xl font-bold text-slate-800 dark:text-slate-100 leading-tight">
-            {title}
-          </h2>
-
-          <time className="block mt-2 text-sm text-slate-600 dark:text-slate-400">
-            {date}
-          </time>
-
-          <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
-            <ArrowUpRight size={20} className="text-slate-400 " />
-          </div>
-        </div>
+    <div className="group flex justify-between items-center p-4 rounded-md transition-all duration-200 hover:-translate-y-[2px] hover:shadow-sm hover:bg-gray-100 dark:hover:bg-white/10">
+      <div className="flex flex-col">
+        <h2 className="text-lg font-semibold tracking-tight leading-snug group-hover:underline">
+          {title}
+        </h2>
+        <time className="text-sm text-gray-400 mt-1">{date}</time>
+      </div>
+      <div className="ml-4 w-[144px] h-[81px] flex-shrink-0 relative rounded-md overflow-hidden">
+        <Image
+          src={thumbnail}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="144px"
+        />
+        {category && (
+          <span className="absolute top-1 left-1 bg-white/80 dark:bg-black/50 text-[11px] text-gray-800 dark:text-gray-100 px-1.5 py-0.5 rounded-sm shadow-sm">
+            {category}
+          </span>
+        )}
       </div>
     </div>
   );

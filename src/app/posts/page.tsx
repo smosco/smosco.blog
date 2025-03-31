@@ -12,19 +12,18 @@ export default function PostsPage() {
   });
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="">
       <ul className="space-y-4">
         {orderedArticles.map((article) => (
           <li key={article.slug}>
-            <Link href={`/${article.slug}`}>
+            <Link href={`/${article.slug}`} className="block">
               <ArticleCard
                 category={article.category}
                 title={article.title}
-                date={new Date(article.date).toLocaleDateString('ko-KR', {
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric',
-                })}
+                date={new Date(article.date)
+                  .toISOString()
+                  .slice(0, 10)
+                  .replace(/-/g, '.')}
                 thumbnail={article.thumbnail}
               />
             </Link>
