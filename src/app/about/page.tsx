@@ -1,5 +1,5 @@
 import React from 'react';
-import { VideoPlayer } from '@/components/VideoPlayer';
+import { YouTubePlayer } from '@/components/YouTubePlayer';
 
 const Section = ({
   title,
@@ -15,18 +15,18 @@ const Section = ({
 );
 
 const FeatureItem = ({
-  videoSrc,
+  videoId,
   title,
   contributions,
 }: {
-  videoSrc: string;
+  videoId: string;
   title: string;
   contributions: string[];
 }) => (
   <div className="flex flex-col lg:flex-row bg-gray-100 rounded border border-gray-300 overflow-hidden">
     {/* 비디오 영역 */}
     <div className="relative w-full lg:w-1/2 aspect-video">
-      <VideoPlayer src={videoSrc} poster="" />
+      <YouTubePlayer videoId={videoId} />
     </div>
 
     {/* 텍스트 영역 */}
@@ -169,7 +169,7 @@ const AboutPage = () => (
       />
       <Section title="내가 구현한 기능">
         <FeatureItem
-          videoSrc="/videos/MainPage.mp4"
+          videoId="-ikKY8TYKmo"
           title="메인 페이지"
           contributions={[
             '재사용 가능한 반응형 Carousel',
@@ -178,7 +178,7 @@ const AboutPage = () => (
           ]}
         />
         <FeatureItem
-          videoSrc="/videos/BookmarkOptimisticUpdate.mp4"
+          videoId="V8fuCVPnGOs"
           title="학습 페이지"
           contributions={[
             '최신 콘텐츠 포인트 차감 모달',
@@ -189,7 +189,7 @@ const AboutPage = () => (
           ]}
         />
         <FeatureItem
-          videoSrc="/videos/ScrapPage.mp4"
+          videoId="oMD1ASRnpPU"
           title="스크랩 페이지"
           contributions={[
             '문장 북마크, 메모 기능',
@@ -198,7 +198,7 @@ const AboutPage = () => (
           ]}
         />
         <FeatureItem
-          videoSrc="/videos/QuizRetry.mp4"
+          videoId="CT5EvJkVSHw"
           title="퀴즈"
           contributions={[
             '내용 일치, 순서 맞추기, 빈칸 채우기 퀴즈 타입 별 컴포넌트',
@@ -208,7 +208,7 @@ const AboutPage = () => (
           ]}
         />
         <FeatureItem
-          videoSrc="/videos/Dashboard.mp4"
+          videoId="b6UlR82Uziw"
           title="대시보드"
           contributions={[
             '사용자 진행 상황 대시보드 설계 및 구현',
@@ -216,7 +216,7 @@ const AboutPage = () => (
           ]}
         />
         <FeatureItem
-          videoSrc="/videos/Responsive.mp4"
+          videoId="rXqI-HENCrQ"
           title="반응형"
           contributions={['반응형 UI 구현']}
         />
@@ -330,7 +330,7 @@ const AboutPage = () => (
       />
       <Section title="내가 구현한 기능">
         <FeatureItem
-          videoSrc="/videos/PrompterPlayer.mp4"
+          videoId="wTsvBMkh9xc"
           title="자막 동기화 및 탐색"
           contributions={[
             '영상 재생 시간에 따른 자막 스크롤',
