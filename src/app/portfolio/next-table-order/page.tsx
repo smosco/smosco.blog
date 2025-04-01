@@ -79,14 +79,14 @@ function NextTableOrderPage() {
           ]}
           keywords={['SSE', 'order_events', '트래픽 최적화']}
           performance={[
-            { key: '10,000건 응답시간', value: '150ms → 5ms' },
-            { key: '1,000,000건 응답시간', value: '3.2s → 6ms' },
+            { key: '1만 건 응답시간', value: '150ms → 5ms' },
+            { key: '100만 건 응답시간', value: '3.2s → 6ms' },
           ]}
         />
 
         <IssueItem
-          title="order_group을 활용한 주문 단위 분리"
-          description="테이블마다 주문을 자동 초기화하고, 실수 복구 및 유실 방지를 고려해 order_group 단위를 도입했습니다."
+          title="order_group을 활용한 주문 단위 자동 초화"
+          description="각 테이블의 주문 상태를 그룹 단위로 관리하고, 실수로 종료된 주문을 복구하거나 일정 시간 후 자동 종료되는 로직을 설계했습니다."
           details={[
             '테이블마다 열려 있는 주문 그룹이 없으면 새로운 order_group 생성',
             '사장님이 실수로 닫은 경우 복구 기능 제공',
@@ -94,7 +94,10 @@ function NextTableOrderPage() {
           ]}
           keywords={['order_group', '자동 초기화', '복구 로직']}
           performance={[
-            { key: '오류 재현률', value: '100% → 0%' },
+            {
+              key: '다음 손님이 입장할 때 이전 주문이 보이지 않도록 처리',
+              value: '안정적인 주문 흐름 유지',
+            },
             { key: '수동 개입 감소', value: '초기화 필요 없음' },
           ]}
         />
