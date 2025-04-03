@@ -1,4 +1,5 @@
 import { ExternalLink, Github, FileText } from 'lucide-react';
+import Image from 'next/image';
 import IssueCard from './IssueCard';
 
 interface LinkInfo {
@@ -11,6 +12,7 @@ interface ProjectSectionProps {
   title: string;
   period: string;
   links?: LinkInfo;
+  thumbnail: string;
   overview: string;
   roles: string[];
   stack: string[];
@@ -29,6 +31,7 @@ export default function ProjectSection({
   title,
   period,
   links,
+  thumbnail,
   overview,
   roles,
   stack,
@@ -79,10 +82,13 @@ export default function ProjectSection({
         </div>
       </section>
 
-      <div className="rounded-md overflow-hidden mb-10">
-        <div className="w-full aspect-[16/9] bg-zinc-100 flex items-center justify-center text-zinc-400">
-          대표 이미지 캡처 예정
-        </div>
+      <div className="rounded-md overflow-hidden mb-10 relative aspect-[16/9]">
+        <Image
+          src={thumbnail}
+          alt={`${title} 대표 이미지`}
+          fill
+          className="object-cover"
+        />
       </div>
 
       <section className="mb-12">
@@ -116,12 +122,12 @@ export default function ProjectSection({
           ))}
         </ul>
         <div className="grid grid-cols-2 gap-4">
-          {featureImages.map((img, i) => (
+          {featureImages.map((src, i) => (
             <div
               key={i}
-              className="aspect-[4/3] bg-zinc-100 flex items-center justify-center text-zinc-400 rounded"
+              className="aspect-[4/3] bg-zinc-100 flex items-center justify-center text-zinc-400 rounded overflow-hidden relative"
             >
-              {img}
+              <Image src={src} alt={src} fill className="object-cover" />
             </div>
           ))}
         </div>
