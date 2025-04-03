@@ -26,7 +26,7 @@ export interface ProjectData {
 export const projects: ProjectData[] = [
   {
     title: 'Next Table Order',
-    period: '2024.12 – 2025.01',
+    period: '2025.01 – 2025.02',
     links: {
       github: 'https://github.com/smosco/next-table-order',
       site: 'https://next-table-order.vercel.app',

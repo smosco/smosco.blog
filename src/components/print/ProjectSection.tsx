@@ -1,4 +1,4 @@
-import { ExternalLink, Github, FileText } from 'lucide-react';
+import { Globe, Github, FileText, MoveUpRight } from 'lucide-react';
 import Image from 'next/image';
 import IssueCard from './IssueCard';
 
@@ -52,30 +52,31 @@ export default function ProjectSection({
             {links?.github && (
               <a
                 href={links.github}
-                className="flex items-center gap-1 text-zinc-700 hover:text-zinc-900"
+                className="flex text-xs items-center gap-1 text-zinc-700 hover:underline bg-gray-100 py-1.5 px-2 rounded-2xl"
               >
-                <Github size={20} />
+                <Github size={12} />
                 <span>GitHub</span>
-                <ExternalLink size={16} />
+                <MoveUpRight size={12} />
               </a>
             )}
             {links?.site && (
               <a
                 href={links.site}
-                className="flex items-center gap-1 text-zinc-700 hover:text-zinc-900"
+                className="flex text-xs items-center gap-1 text-zinc-700 hover:underline bg-gray-100 py-1.5 px-2 rounded-2xl"
               >
+                <Globe size={12} />
                 <span>Site</span>
-                <ExternalLink size={16} />
+                <MoveUpRight size={12} />
               </a>
             )}
             {links?.docs && (
               <a
                 href={links.docs}
-                className="flex items-center gap-1 text-zinc-700 hover:text-zinc-900"
+                className="flex text-xs items-center gap-1 text-zinc-700 hover:underline bg-gray-100 py-1.5 px-2 rounded-2xl"
               >
-                <FileText size={20} />
+                <FileText size={12} />
                 <span>Docs</span>
-                <ExternalLink size={16} />
+                <MoveUpRight size={12} />
               </a>
             )}
           </div>
