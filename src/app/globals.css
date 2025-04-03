@@ -52,12 +52,43 @@
   }
 }
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
 @layer base {
-  * {
-    @apply border-border;
+  h1 {
+    @apply text-3xl font-bold;
   }
-  body {
-    @apply bg-background text-foreground;
-    font-family: var(--font-pretendard), Arial, sans-serif;
+  h2 {
+    @apply text-xl font-bold;
+  }
+  h3 {
+    @apply text-lg font-bold;
+  }
+  p {
+    @apply leading-relaxed;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }

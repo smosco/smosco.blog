@@ -42,8 +42,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body className={`${pretendard.variable} antialiased`}>
-        <Header />
-        <main className="pt-[120px] px-4 max-w-4xl mx-auto min-h-[calc(100vh-80px)]">
+        {/* <Header /> */}
+        {/* <main className="pt-[120px] px-4 max-w-4xl mx-auto min-h-[calc(100vh-80px)]"> */}
+        <main className="px-4 max-w-4xl mx-auto min-h-[calc(100vh-80px)]">
           {children}
         </main>
       </body>
