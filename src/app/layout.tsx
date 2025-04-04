@@ -1,14 +1,12 @@
-import type { Metadata } from 'next';
+import { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import { Header } from '@/components/layout/Header';
 
 const pretendard = localFont({
   src: './fonts/PretendardVariable.woff2',
   variable: '--font-pretendard',
-  display: 'swap', // 폰트 로드 전에 기본 폰트 표시
+  display: 'swap',
 });
-
 export const metadata: Metadata = {
   title: 'smosco from cosmos',
   description: 'smosco의 테크 블로그',
@@ -33,20 +31,14 @@ export const metadata: Metadata = {
     ],
   },
 };
-
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="ko">
-      <body className={`${pretendard.variable} antialiased`}>
-        <Header />
-        <main className="pt-[120px] px-4 max-w-4xl mx-auto min-h-[calc(100vh-80px)]">
-          {children}
-        </main>
-      </body>
+    <html lang="ko" className={pretendard.variable}>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }
