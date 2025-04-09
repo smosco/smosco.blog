@@ -41,7 +41,7 @@ export default function ProjectSection({
   retrospective,
 }: ProjectSectionProps) {
   return (
-    <div className="text-zinc-800">
+    <div className="mb-12 text-zinc-800">
       <section className="mb-8">
         <div className="flex justify-between items-center mb-8">
           <div>

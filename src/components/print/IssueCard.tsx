@@ -7,11 +7,11 @@ interface Issue {
 
 export default function IssueCard({ title, asIs, toBe, result }: Issue) {
   return (
-    <div className="mb-16">
+    <div className="mb-8">
       <h3 className="text-lg font-bold mb-2">{title}</h3>
 
       <div className="mb-6">
-        <p className="text-lg font-bold mb-1">AS-IS</p>
+        <p className="text-md font-bold mb-1">AS-IS</p>
         <ul className="list-disc list-inside">
           {asIs.map((item, i) => (
             <li key={i}>{item}</li>
@@ -20,7 +20,7 @@ export default function IssueCard({ title, asIs, toBe, result }: Issue) {
       </div>
 
       <div className="mb-6">
-        <p className="text-lg font-bold mb-1">TO-BE</p>
+        <p className="text-md font-bold mb-1">TO-BE</p>
         <ul className="list-disc list-inside">
           {toBe.map((item, i) => (
             <li key={i}>{item}</li>
@@ -29,7 +29,7 @@ export default function IssueCard({ title, asIs, toBe, result }: Issue) {
       </div>
 
       <div>
-        <p className="text-lg font-bold mb-1">결과</p>
+        <p className="text-md font-bold mb-1">결과</p>
         <ul className="list-disc list-inside">
           {result.map((item, i) => (
             <li key={i}>{item}</li>
