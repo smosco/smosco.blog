@@ -1,16 +1,19 @@
 import { Metadata } from 'next';
 import MarkdownContent from '@/components/MarkdownContent';
-import { getPostById } from '@/lib/markdown';
+import { getPostById, getPostMetaById } from '@/lib/markdown';
 
 type Props = {
   params: { slug: string };
 };
 
+// 정적 페이지 강제 (SSG)
+export const dynamic = 'error';
+
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const id = params.slug.split('-')[0];
-  const post = await getPostById(id);
+  const postMeta = getPostMetaById(id);
 
-  if (!post) {
+  if (!postMeta) {
     return {
       title: 'smosco.dev',
       description: 'smosco의 테크 블로그',
@@ -18,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
         type: 'website',
         title: 'BIENGUAL Blog',
         description: 'smosco의 테크 블로그',
-        url: `https://smosco-dev.vercel.app/posts/${params.slug}`, // fallback 용
+        url: `https://smosco-dev.vercel.app/posts/${params.slug}`,
         images: [
           {
             url: 'https://smosco-dev.vercel.app/images/default-og.png',
@@ -32,21 +35,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   }
 
   return {
-    title: post.title,
+    title: postMeta.title,
     description: 'smosco의 테크 블로그',
     openGraph: {
       type: 'article',
-      title: post.title,
+      title: postMeta.title,
       description: 'smosco의 테크 블로그',
-      url: `https://smosco-dev.vercel.app/posts/${post.id}-${post.slug}`,
+      url: `https://smosco-dev.vercel.app/posts/${params.slug}`,
       images: [
         {
-          url: post.thumbnail
-            ? `https://smosco-dev.vercel.app${post.thumbnail}`
+          url: postMeta.thumbnail
+            ? `https://smosco-dev.vercel.app${postMeta.thumbnail}`
             : 'https://smosco-dev.vercel.app/images/og-image.png',
           width: 1200,
           height: 630,
-          alt: post.title,
+          alt: postMeta.title,
         },
       ],
     },
@@ -54,7 +57,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  // URL 예: "1-주문-리셋-사장님도-헷갈린다"
   const id = params.slug.split('-')[0];
   const post = await getPostById(id);
 
@@ -90,10 +92,10 @@ export default async function BlogPostPage({ params }: Props) {
       <hr className="mt-8" />
       <footer>
         <a
-          href="/articles"
+          href="/posts"
           className="block mt-24 text-lg underline text-blue-500 hover:text-blue-700"
         >
-          ← 돌아가기 /articles
+          ← 돌아가기 /posts
         </a>
       </footer>
     </section>

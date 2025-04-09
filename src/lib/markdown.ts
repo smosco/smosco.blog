@@ -1,4 +1,3 @@
-// lib/markdown.ts
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -12,14 +11,13 @@ const contentDirectory = path.join(process.cwd(), 'src', 'contents');
 
 function makeSlug(title: string): string {
   return title
-    .replace(/\[.*?\]/g, '') // [Next Table Order #2] 제거
+    .replace(/\[.*?\]/g, '')
     .trim()
     .toLowerCase()
     .replace(/[^\w가-힣\s-]/g, '')
     .replace(/\s+/g, '-');
 }
 
-// 모든 글 목록
 export function getAllPosts(): Post[] {
   const fileNames = fs.readdirSync(contentDirectory);
 
@@ -27,11 +25,10 @@ export function getAllPosts(): Post[] {
     const fullPath = path.join(contentDirectory, fileName);
     const fileContents = fs.readFileSync(fullPath, 'utf8');
     const { data } = matter(fileContents);
-
-    const slug = makeSlug(data.title); // 사람이 보기 좋은 slug 생성
+    const slug = makeSlug(data.title);
 
     return {
-      id: String(data.id), // id는 필수
+      id: String(data.id),
       slug,
       ...(data as Omit<Post, 'slug' | 'id'>),
     };
@@ -42,7 +39,7 @@ let highlighterCache: any = null;
 async function getShikiHighlighter() {
   if (!highlighterCache) {
     highlighterCache = await createHighlighter({
-      themes: ['vitesse-dark', 'vitesse-light'],
+      themes: ['vitesse-dark'],
       langs: ['javascript', 'typescript', 'json', 'bash', 'sql', 'tsx'],
     });
   }
@@ -50,36 +47,61 @@ async function getShikiHighlighter() {
 }
 
 export async function getPostById(id: string): Promise<Post | null> {
-  const fileName = fs.readdirSync(contentDirectory).find((file) => {
-    const content = fs.readFileSync(path.join(contentDirectory, file), 'utf8');
-    const { data } = matter(content);
-    return String(data.id) === id;
-  });
+  const fileNames = fs.readdirSync(contentDirectory);
 
-  if (!fileName) return null;
+  for (const fileName of fileNames) {
+    const fullPath = path.join(contentDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data, content } = matter(fileContents);
 
-  const fullPath = path.join(contentDirectory, fileName);
-  const fileContents = fs.readFileSync(fullPath, 'utf8');
-  const { data, content } = matter(fileContents);
+    if (String(data.id) === id) {
+      const processedMarkdown = await remark()
+        .use(gfm)
+        .use(html)
+        .process(content);
+      let contentHtml = processedMarkdown.toString();
 
-  const processedMarkdown = await remark().use(gfm).use(html).process(content);
-  let contentHtml = processedMarkdown.toString();
+      const highlighter = await getShikiHighlighter();
+      contentHtml = contentHtml.replace(
+        /<pre><code class="language-(\w+)">([\s\S]*?)<\/code><\/pre>/g,
+        (_, lang, code) => {
+          return highlighter.codeToHtml(code, {
+            theme: 'vitesse-dark',
+            lang,
+          });
+        },
+      );
 
-  const highlighter = await getShikiHighlighter();
-  contentHtml = contentHtml.replace(
-    /<pre><code class="language-(\w+)">([\s\S]*?)<\/code><\/pre>/g,
-    (_, lang, code) => {
-      return highlighter.codeToHtml(code, {
-        theme: 'vitesse-dark',
-        lang,
-      });
-    },
-  );
+      return {
+        id: String(data.id),
+        slug: makeSlug(data.title),
+        ...data,
+        contentHtml,
+      } as Post;
+    }
+  }
 
-  return {
-    id: String(data.id),
-    slug: makeSlug(data.title),
-    ...data,
-    contentHtml,
-  } as Post;
+  return null;
+}
+
+// 가벼운 메타데이터만 추출 (generateMetadata 용)
+export function getPostMetaById(
+  id: string,
+): { title: string; thumbnail?: string } | null {
+  const fileNames = fs.readdirSync(contentDirectory);
+
+  for (const fileName of fileNames) {
+    const fullPath = path.join(contentDirectory, fileName);
+    const fileContents = fs.readFileSync(fullPath, 'utf8');
+    const { data } = matter(fileContents);
+
+    if (String(data.id) === id) {
+      return {
+        title: data.title,
+        thumbnail: data.thumbnail,
+      };
+    }
+  }
+
+  return null;
 }

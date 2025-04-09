@@ -87,7 +87,7 @@ function HomePage() {
           <li className="flex items-center gap-2">
             <span className="text-yellow-500 text-lg">✦</span>
             <span>
-              Next.js, React.js, TypeScript, Javascript, Styled-Component,
+              Next.js, React.js, TypeScript, Javascript, styled-components,
               Tailwind CSS, SCSS
             </span>
           </li>
