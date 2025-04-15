@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 const navigation = [
   { name: 'Posts', href: '/posts' },
   { name: 'Portfolio', href: '/portfolio' },
+  { name: 'Projects', href: '/projects' },
 ];
 
 export function Header() {

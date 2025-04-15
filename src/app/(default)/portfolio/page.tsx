@@ -1,96 +1,116 @@
-import React from 'react';
-import { ProjectCard } from '@/components/ProjectCard';
+'use client';
 
-import { Github, Mail } from 'lucide-react';
+import { projects } from '@/data/projects';
+import ProjectSection from '@/components/print/ProjectSection';
+import { Github, Mail, Book } from 'lucide-react';
 
-const socialLinks = [
-  {
-    icon: Mail,
-    href: 'mailto:go1ruf2tk3@gmail.com',
-    label: 'Email',
-  },
-  {
-    icon: Github,
-    href: 'https://github.com/smosco',
-    label: 'GitHub',
-  },
-];
+export default function PortfolioPage() {
+  return (
+    <div className="px-6 py-10 max-w-[680px] mx-auto text-gray-800">
+      {/* Profile Section */}
+      <section className=" mb-12">
+        <div className="flex items-start gap-4">
+          {/* Name & Role */}
+          <div>
+            <h1 className="text-2xl font-bold">한현</h1>
+            <p className="text-gray-600 mt-1">Frontend Engineer</p>
+          </div>
+        </div>
 
-const PortfolioPage = () => (
-  <div className="px-4">
-    <header className="mt-4 text-center mb-12">
-      <h1 className="text-3xl font-bold mb-2">한현 - Frontend Engineer</h1>
-      <p className="text-gray-600">
-        Product-minded Developer | Crafting Meaningful Solutions
-      </p>
+        {/* Highlight Sentence */}
+        <div className="mt-8 text-lg font-medium text-gray-900">
+          사용자에게 닿는 결과를 고민하며, 끝까지 책임지는 개발자입니다. 👨‍💻
+        </div>
 
-      <div className="mt-6 flex justify-center gap-4">
-        {socialLinks.map(({ icon: Icon, href, label }, i) => (
-          <a
-            key={i}
-            href={href}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={label}
-            className="inline-flex h-10 w-10 items-center justify-center rounded-full bg-gray-100 text-gray-700 hover:bg-blue-100 hover:text-blue-600 transition dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-blue-400"
-          >
-            <Icon className="h-5 w-5" />
-          </a>
-        ))}
-      </div>
-    </header>
+        {/* Description */}
+        <div className="mt-4 text-base leading-relaxed text-gray-700">
+          기획부터 함께 고민하고, 불완전한 흐름을 발견하면 더 나은 방향을
+          제안합니다. 팀원이 빠진 프로젝트도 끝까지 완수했고, 주말에도 자리를
+          지켰습니다. 화려한 말보다, 일하는 방식과 꾸준함으로 신뢰를 얻고
+          싶습니다.
+        </div>
 
-    <div className="px-4 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-      <ProjectCard
-        title="Next Table Order"
-        slug="next-table-order"
-        shortDescription="웹 기반 테이블 오더 시스템"
-        thumbnail="/images/portfolio/next-table-order-thumb.png"
-        techStack={[
-          'Next.js',
-          'TypeScript',
-          'Tailwind CSS',
-          'Supabase',
-          'shadcn/ui',
-        ]}
-        demoLink="https://next-table-order.vercel.app/"
-        githubLink="https://github.com/smosco/next-table-order"
-      />
-      <ProjectCard
-        title="Biengual"
-        slug="biengual"
-        shortDescription="CNN 뉴스와 YouTube 기반 맞춤형 영어 학습 플랫폼"
-        thumbnail="/images/portfolio/biengual-thumb.png"
-        techStack={[
-          'Next.js',
-          'TypeScript',
-          'React-Query',
-          'Recharts.js',
-          'Tailwind CSS',
-          'shadcn/ui',
-        ]}
-        demoLink="https://biengual.store"
-        githubLink="https://github.com/Kernel360/F2-BIENGUAL-FE"
-      />
-      <ProjectCard
-        title="React Player Plugin Prompter"
-        slug="react-player-plugin-prompter"
-        shortDescription="영어 학습을 위한 자막 탐색 최적화 오픈소스 라이브러리"
-        thumbnail="/images/portfolio/plugin-prompter-thumb.png"
-        techStack={[
-          'React',
-          'TypeScript',
-          'ESBuild',
-          'Yarn Workspaces',
-          'GitHub Actions',
-          'Vite',
-          'SCSS',
-        ]}
-        demoLink="https://www.npmjs.com/package/react-player-plugin-prompter"
-        githubLink="https://github.com/smosco/react-player-plugin-prompter"
-      />
+        <div className="mt-4 text-base leading-relaxed text-gray-700">
+          모르는 기술은 직접 실험하며 익히고, 설득이 필요할 땐 수치와 근거로
+          설명합니다. 출근길 지하철에서도 문제 해결을 고민하고, 팀의 어려움엔
+          먼저 나서서 함께 풀어냅니다.
+        </div>
+
+        <div className="mt-6 text-base leading-relaxed text-gray-700">
+          작은 기능에도 사용자의 맥락과 목표를 담아내는 것, 그게 제가 제품을
+          만드는 프론트엔드 개발자로서 가장 중요하게 생각하는 부분입니다. 💪
+        </div>
+      </section>
+
+      {/* About Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-4">About</h2>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex items-center gap-3">
+            <div className="bg-gray-200 rounded-full p-2">
+              <div className="w-6 h-6 rounded-full bg-gray-400"></div>
+            </div>
+            <span>1998. 05. 13</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="bg-gray-200 rounded-full p-2">
+              <Book className="w-6 h-6 text-gray-500" />
+            </div>
+            <a href="https://smosco.dev" className="underline text-gray-700">
+              https://smosco.dev
+            </a>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="bg-gray-200 rounded-full p-2">
+              <Mail className="w-6 h-6 text-gray-500" />
+            </div>
+            <span>go1ruf2tk3@gmail.com</span>
+          </div>
+
+          <div className="flex items-center gap-3">
+            <div className="bg-gray-200 rounded-full p-2">
+              <Github className="w-6 h-6 text-gray-500" />
+            </div>
+            <a
+              href="https://github.com/smosco"
+              className="underline text-gray-700"
+            >
+              https://github.com/smosco
+            </a>
+          </div>
+        </div>
+      </section>
+
+      {/* Skills Section */}
+      <section className="mb-12">
+        <h2 className="text-2xl font-bold mb-4">Skills</h2>
+
+        <ul className="space-y-4">
+          <li className="flex items-center gap-2">
+            <span className="text-yellow-500 text-lg">✦</span>
+            <span>
+              Next.js, React.js, Vite, TypeScript, JavaScript, Tailwind CSS,
+              styled-components,SCSS
+            </span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-yellow-500 text-lg">✦</span>
+            <span>Tanstack Query, Zustand, Redux</span>
+          </li>
+          <li className="flex items-center gap-2">
+            <span className="text-yellow-500 text-lg">✦</span>
+            <span>Git, GitHub, GitHub Actions</span>
+          </li>
+        </ul>
+      </section>
+
+      {/* Project Sections */}
+      {projects.map((project, i) => (
+        <ProjectSection key={i} {...project} />
+      ))}
     </div>
-  </div>
-);
-
-export default PortfolioPage;
+  );
+}

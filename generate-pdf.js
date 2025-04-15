@@ -9,7 +9,7 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
 
   // ✅ 출력할 페이지 URL
-  const targetUrl = 'https://www.smosco.dev/portfolio/print'; // 예: BIENGUAL 페이지
+  const targetUrl = 'https://www.smosco.dev/print'; // 예: BIENGUAL 페이지
 
   await page.goto(targetUrl, {
     waitUntil: 'networkidle0', // 모든 요청이 끝날 때까지 대기
