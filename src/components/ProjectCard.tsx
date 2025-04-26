@@ -40,63 +40,53 @@ export const ProjectCard = ({
 
       {/* 카드 본문 */}
       <div className="flex flex-1 flex-col p-5">
-        {/* 프로젝트 제목에만 링크 */}
-        <Link href={`/portfolio/${slug}`}>
+        <Link href={`/projects/${slug}`}>
           <h3 className="mb-2 text-xl font-semibold tracking-tight transition-colors duration-300 group-hover:text-blue-600 dark:group-hover:text-blue-400">
             {title}
           </h3>
+
+          {/* 한 줄 설명 */}
+          <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
+            {shortDescription}
+          </p>
+
+          {/* 기술 스택 */}
+          <div className="flex flex-wrap gap-2 mb-6">
+            {techStack.map((tech, i) => (
+              <span
+                key={i}
+                className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-200"
+              >
+                {tech}
+              </span>
+            ))}
+          </div>
         </Link>
 
-        {/* 한 줄 설명 */}
-        <p className="mb-4 text-sm text-gray-600 dark:text-gray-400">
-          {shortDescription}
-        </p>
-
-        {/* 기술 스택 */}
-        <div className="flex flex-wrap gap-2 mb-6">
-          {techStack.map((tech, i) => (
-            <span
-              key={i}
-              className="inline-flex items-center rounded-full bg-gray-100 px-2.5 py-0.5 text-xs font-medium text-gray-800 dark:bg-gray-800 dark:text-gray-200"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-
         {/* 하단 링크 영역 */}
-        <div className="mt-auto flex items-center justify-between">
-          <Link
-            href={`/portfolio/${slug}`}
-            className="relative text-sm font-medium text-gray-900 transition-colors duration-300 after:absolute after:bottom-0 after:left-0 after:h-[2px] after:w-0 after:bg-blue-500 after:transition-all after:duration-300 hover:text-blue-600 hover:after:w-full dark:text-gray-100 dark:hover:text-blue-400"
-          >
-            자세히 보기
-          </Link>
-
-          <div className="flex gap-3">
-            {demoLink && (
-              <a
-                href={demoLink}
-                target="_blank"
-                rel="noreferrer"
-                className="group/btn relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-blue-100 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-blue-400"
-                aria-label="데모 보기"
-              >
-                <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover/btn:scale-110" />
-              </a>
-            )}
-            {githubLink && (
-              <a
-                href={githubLink}
-                target="_blank"
-                rel="noreferrer"
-                className="group/btn relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-blue-100 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-blue-400"
-                aria-label="GitHub 저장소 보기"
-              >
-                <Github className="h-4 w-4 transition-transform duration-300 group-hover/btn:scale-110" />
-              </a>
-            )}
-          </div>
+        <div className="flex gap-3">
+          {demoLink && (
+            <a
+              href={demoLink}
+              target="_blank"
+              rel="noreferrer"
+              className="group/btn relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-blue-100 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-blue-400"
+              aria-label="데모 보기"
+            >
+              <ExternalLink className="h-4 w-4 transition-transform duration-300 group-hover/btn:scale-110" />
+            </a>
+          )}
+          {githubLink && (
+            <a
+              href={githubLink}
+              target="_blank"
+              rel="noreferrer"
+              className="group/btn relative inline-flex h-9 w-9 items-center justify-center overflow-hidden rounded-full bg-gray-100 text-gray-700 transition-all duration-300 hover:bg-blue-100 hover:text-blue-600 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 dark:hover:text-blue-400"
+              aria-label="GitHub 저장소 보기"
+            >
+              <Github className="h-4 w-4 transition-transform duration-300 group-hover/btn:scale-110" />
+            </a>
+          )}
         </div>
       </div>
     </div>
