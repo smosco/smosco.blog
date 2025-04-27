@@ -72,7 +72,7 @@ draft: false
 
 ## 5. 최종 해결책: `order_groups` 도입
 
-우리는 새로운 개념인 `order_group`을 도입했다.  
+새로운 개념인 `order_group`을 도입했다.  
 `order_group`은 **손님 한 팀의 주문을 묶는 단위**다.
 
 손님이 바뀔 때마다 새로운 `order_group`을 생성하고, 이후 주문은 이 그룹에 연결한다.
