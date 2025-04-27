@@ -7,8 +7,6 @@ thumbnail: '/images/thumbnail/주문리셋썸.webp'
 draft: false
 ---
 
-# 손님 교체 시 주문 리셋 문제와 해결 과정
-
 ## 1. 들어가며
 
 테이블 오더 시스템을 개발하는 과정에서 예상치 못한 문제가 발생했다.  
