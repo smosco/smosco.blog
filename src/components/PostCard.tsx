@@ -14,14 +14,19 @@ export default function PostCard({
   thumbnail,
 }: PostCardProps) {
   return (
-    <div className="group flex justify-between items-center p-4 rounded-md transition-all duration-200 hover:-translate-y-[2px] hover:shadow-sm hover:bg-gray-100 dark:hover:bg-white/10">
-      <div className="flex flex-col">
-        <h2 className="text-lg font-semibold tracking-tight leading-snug group-hover:underline">
+    <div className="group flex justify-between items-center p-4 rounded-lg transition-all duration-300 bg-white hover:bg-gray-50 hover:shadow-lg hover:-translate-y-1">
+      <div className="flex flex-col justify-center">
+        {category && (
+          <div className="inline-block w-fit bg-gray-100 group-hover:bg-gray-200 text-gray-600 text-xs font-semibold px-2 py-0.5 rounded-full mb-2 transition-colors duration-300">
+            {category}
+          </div>
+        )}
+        <h2 className="text-lg font-bold tracking-tight leading-snug text-gray-900 group-hover:underline">
           {title}
         </h2>
         <time className="text-sm text-gray-400 mt-1">{date}</time>
       </div>
-      <div className="ml-4 w-[144px] h-[81px] flex-shrink-0 relative rounded-md overflow-hidden">
+      <div className="ml-6 w-[144px] h-[81px] flex-shrink-0 relative rounded-md overflow-hidden">
         <Image
           src={thumbnail}
           alt={title}
@@ -29,11 +34,6 @@ export default function PostCard({
           className="object-cover"
           sizes="144px"
         />
-        {category && (
-          <span className="absolute top-1 left-1 bg-white/80 dark:bg-black/50 text-[11px] text-gray-800 dark:text-gray-100 px-1.5 py-0.5 rounded-sm shadow-sm">
-            {category}
-          </span>
-        )}
       </div>
     </div>
   );
