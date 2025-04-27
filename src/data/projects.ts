@@ -26,14 +26,14 @@ export interface ProjectData {
 export const projects: ProjectData[] = [
   {
     title: 'Next Table Order',
-    period: '2025.01 – 진행중',
+    period: '2025.01 – 2025.04',
     links: {
       github: 'https://github.com/smosco/next-table-order',
       site: 'https://next-table-order.vercel.app',
     },
     thumbnail: '/images/portfolio/print/n-main.png',
     overview:
-      'Next Table Order는 테이블 오더와 포스기가 없는 식당의 불편함을 해결하기 위해 만든 웹 주문 시스템입니다.\n실시간 주문 흐름과 사용자 행동 기반 구조상 CSR이 더 적합했지만, 풀스택 개발 속도를 고려해 Supabase와 Next.js App Router 조합을 선택했습니다.\n초기에는 polling 방식으로 전체 주문을 다시 불러왔지만, 주문량이 많아지며 병목이 발생해 주문 이벤트 전용 테이블을 만들고 SSE 기반으로 필요한 주문만 가져오도록 개선했습니다.\n기획부터 UI, API, DB까지 직접 설계하며 데이터 구조와 API 명세 감각도 함께 키운 프로젝트입니다.',
+      'Next Table Order는 테이블 오더와 포스기가 없는 식당의 불편함을 해결하기 위해 만든 웹 주문 시스템입니다.\n실시간 주문 흐름과 사용자 행동 기반 구조상 CSR이 더 적합했지만, 빠른 풀스택 개발 속도를 고려해 Supabase와 Next.js App Router 조합을 선택했습니다.\n초기에는 polling 방식으로 전체 주문을 다시 불러왔지만, 주문량이 많아지면서 병목이 발생해 주문 이벤트 전용 테이블을 도입하고, SSE 기반으로 필요한 주문만 가져오는 방식으로 최적화했습니다.\n기획부터 UI, DB, API까지 직접 설계하며, 운영 매장에서 발생할 수 있는 다양한 예외 케이스를 가정해 데이터 구조와 API 명세를 구성했습니다.\n혼자 진행한 프로젝트였지만, 사장님과 고객 입장에서 피드백을 예측하고, 실제 운영 시나리오를 고려해 개선 사이클을 반복했습니다.',
     roles: [
       '식당 현장 문제 해결을 위한 주문 흐름 기획 및 전체 설계',
       'Next.js를 활용한 빠른 풀스택 개발',
@@ -44,7 +44,7 @@ export const projects: ProjectData[] = [
     stack: [
       'Frontend: Next.js 15 (App Router), TypeScript, Tailwind CSS, shadcn/ui, next-intl',
       'Backend: Supabase (PostgreSQL + Realtime)',
-      'Infra & Tools: pnpm, Vercel',
+      'Infra & Tools: PNPM, Vercel',
     ],
     features: [
       '고객이 웹 페이지를 통해 주문하면 관리자 화면에 실시간으로 반영되는 흐름 설계',
@@ -135,7 +135,7 @@ export const projects: ProjectData[] = [
       },
     ],
     retrospective:
-      '단순한 주문 서비스 구현이 아닌, 실제 매장에서 발생하는 운영 흐름의 문제를 기술로 해결해보고자 시작한 프로젝트였습니다.\n고객과 사장님 모두의 불편함을 줄이기 위해 주문 단위 자동 초기화, 실수 복구 로직, 옵션 처리 등 현실적인 흐름을 직접 모델링하고 구현했습니다.\n특히 SSE 최적화, i18n 다국어 구조 설계, 과거 주문 금액 보존 등은 단순한 CRUD가 아닌 서비스 설계 관점에서 고민한 결과물입니다.\n프론트엔드 개발자로서 단순한 UI 구현을 넘어서 비즈니스 흐름을 이해하고, 문제를 정의하고, 해결하는 능력을 성장시킨 계기가 되었습니다.',
+      '단순한 주문 서비스 구현에 그치지 않고, 실제 매장에서 발생할 수 있는 다양한 운영 흐름과 장애 상황을 가정하여 기술적으로 해결하려 했던 프로젝트였습니다.\n협업 대상자가 없는 상황에서도 사용자(사장님, 고객) 관점에서 반복적으로 피드백을 가정하고, 문제를 정의하고, 개선하는 사이클을 주도했습니다.\n특히 주문 단위 자동 초기화, 실수 복구 로직, 옵션별 장바구니 처리, 주문 시점 가격 보존 등은 단순한 CRUD가 아니라 운영 안정성과 데이터 신뢰성을 확보하기 위한 서비스 설계 관점에서 고민한 결과물입니다.\n또한 실시간 주문 최적화를 위해 SSE 구조를 개선하고, 다국어(i18n) 구조를 설계하는 과정에서는 확장성과 다양한 사용자 환경을 고려한 설계 경험을 쌓을 수 있었습니다.\n이 프로젝트를 통해 단순한 UI 구현을 넘어, 사용자의 실제 행동과 운영 흐름을 고려하여 문제를 정의하고, 빠르게 실험하고 개선하는 제품 중심 개발자로 성장할 수 있었습니다.',
   },
   {
     title: 'BIENGUAL',
@@ -146,7 +146,7 @@ export const projects: ProjectData[] = [
     },
     thumbnail: '/images/portfolio/print/b-main.png',
     overview:
-      'BIENGUAL은 YouTube 영상과 CNN 기사로 영어를 학습할 수 있는 리딩·리스닝 플랫폼입니다.\n학습자가 관심 있는 카테고리를 설정하면 맞춤 콘텐츠를 추천하고, 자막 기반 학습, 북마크·메모, 퀴즈, 학습 미션, 대시보드를 통해 몰입 흐름을 설계했습니다.\n퀴즈 상태는 useReducer 기반의 이벤트 모델로 구조화했고, 북마크와 메모는 TanStack Query로 낙관적 업데이트를 적용했으며, 학습 대시보드는 Recharts로 시각화해 성과 체감을 돕는 데 집중했습니다.\nNext.js App Router 기반으로 SEO도 고려하며, 성능과 사용자 경험을 함께 개선한 프로젝트입니다.',
+      'BIENGUAL은 YouTube 영상과 CNN 기사로 영어를 학습할 수 있는 리딩·리스닝 플랫폼입니다.\n학습자가 관심 있는 카테고리를 설정하면 맞춤 콘텐츠를 추천하고, 자막 기반 학습, 북마크·메모, 퀴즈, 학습 미션, 대시보드를 통해 몰입 학습 흐름을 설계했습니다.\n퀴즈 상태는 useReducer 기반의 이벤트 모델로 구조화하고, 북마크와 메모는 React-Query를 활용해 낙관적 업데이트를 적용했으며, 학습 대시보드는 Recharts로 시각화하여 성과 체감을 높였습니다.\nNext.js App Router 기반으로 SEO와 초기 로딩 성능 개선을 고려하며, 학습 경험의 완성도를 높이는 데 집중했습니다.',
     roles: [
       '프론트엔드 리더로서 UI/UX 흐름 및 기술 구조 설계 주도',
       '이벤트 기반 퀴즈 상태 모델링 및 반복 학습 구조 구현',
@@ -154,7 +154,7 @@ export const projects: ProjectData[] = [
       'SEO 대응, 반응형 UI 구현 등 사용자 접근성과 경험 향상을 위한 개선 진행',
     ],
     stack: [
-      'Next.js 14 (App Router), TypeScript, Tanstack Query, Tailwind CSS, Storybook, shadcn/ui',
+      'Next.js 14 (App Router), TypeScript, React-Query, Tailwind CSS, Storybook, shadcn/ui',
       'Recharts, Autocannon',
     ],
     features: [
@@ -240,7 +240,7 @@ export const projects: ProjectData[] = [
         ],
       },
       {
-        title: 'SEO 및 검색 노출 최적화',
+        title: 'SEO 기반 작업',
         asIs: ['메타 태그 누락, 소셜 미리보기 미표시, 콘텐츠 검색 노출 불가'],
         toBe: [
           'Next.js의 `generateMetadata`로 페이지별 메타 자동 생성',
@@ -255,7 +255,7 @@ export const projects: ProjectData[] = [
       },
     ],
     retrospective:
-      '단순히 콘텐츠를 보여주는 것이 아니라, 사용자가 몰입해서 반복 학습할 수 있도록 구조를 설계하는 데 집중했습니다.\n퀴즈 흐름은 이벤트 기반 아키텍처로 재설계하고, 성능 병목 해결과 SEO까지 고려하여 서비스 완성도를 높였습니다.\n특히 북마크, 퀴즈, 대시보드가 하나의 학습 흐름으로 연결되도록 유저 여정을 설계한 과정은 제품 중심의 프론트엔드 사고를 키우는 계기가 되었습니다.',
+      '단순히 콘텐츠를 나열하는 것이 아니라, 사용자가 몰입하고 반복 학습할 수 있도록 전체 학습 흐름을 구조적으로 설계하는 데 집중했습니다.\n특히 퀴즈 흐름은 이벤트 기반 아키텍처로 재설계하여 정확한 상태 전이와 예측 가능한 확장성을 확보했고, 초기 로딩 최적화와 SEO 개선을 통해 서비스 완성도를 높였습니다.\n북마크, 퀴즈, 대시보드가 하나의 학습 여정으로 자연스럽게 연결되도록 설계하면서, 단순한 기능 구현을 넘어 제품 중심의 프론트엔드 사고를 키울 수 있었습니다.\n백엔드 팀과 API 응답 포맷과 에러 처리 방식을 구체적으로 조율했습니다.\n이를 통해 프론트엔드에서 학습 흐름이 일관되게 연결될 수 있었고, 사용자가 오류나 지연 없이 자연스럽게 학습을 이어갈 수 있도록 설계했습니다.',
   },
   {
     title: 'react-player-plugin-prompter',
@@ -270,11 +270,11 @@ export const projects: ProjectData[] = [
     roles: [
       '전체 라이브러리 설계 및 구현 주도',
       'Yarn Workspaces 기반 모노레포 구조 구성',
-      'GitHub Actions + esbuild 기반 NPM 자동 배포 파이프라인 구축',
+      'GitHub Actions + ESBuild 기반 NPM 자동 배포 파이프라인 구축',
       '실제 서비스(BIENGUAL) 연동을 위한 인터페이스 설계 및 리팩터링',
     ],
     stack: [
-      'React, TypeScript, Vite, SCSS, esbuild',
+      'React, TypeScript, Vite, SCSS, ESBuild',
       'Yarn Workspaces (Monorepo)',
       'GitHub Actions (CI/CD)',
     ],
@@ -294,7 +294,7 @@ export const projects: ProjectData[] = [
         title: '대용량 자막 탐색 성능 최적화',
         asIs: [
           '자막을 순차 탐색(O(n)) 방식으로 처리하여 1,000개 이상일 때 평균 탐색 시간 13.2ms 소요',
-          '→ 영상 진행 중 버퍼링 발생',
+          '영상 진행 중 버퍼링 발생',
         ],
         toBe: [
           '이진 탐색(O(log n)) 알고리즘으로 개선하여 평균 탐색 시간 0.15ms로 단축',

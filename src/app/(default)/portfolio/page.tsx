@@ -105,7 +105,7 @@ export default function PortfolioPage() {
           </li>
           <li className="flex items-center gap-2">
             <span className="text-yellow-500 text-lg">✦</span>
-            <span>Tanstack Query, Zustand, Redux</span>
+            <span>React-Query, Zustand, Redux</span>
           </li>
           <li className="flex items-center gap-2">
             <span className="text-yellow-500 text-lg">✦</span>
